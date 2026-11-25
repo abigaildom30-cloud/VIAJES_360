@@ -1,0 +1,113 @@
+{% extends "viajes/base.html" %}
+
+{% block titulo %}Destinos | Viajes Luma{% endblock %}
+
+{% block contenido %}
+<section class="pagina-interna portada-destinos">
+    <div class="pagina-interna-contenido">
+        <span class="eyebrow">EXPLORA EL MUNDO</span>
+        <h1>Encuentra tu próximo destino</h1>
+    </div>
+</section>
+
+<section class="seccion destinos-seccion">
+    <div class="contenedor">
+        <form class="buscador-avanzado" method="get">
+            <input
+                type="search"
+                name="buscar"
+                value="{{ busqueda }}"
+                placeholder="Busca país, ciudad o lugar..."
+            >
+
+            <select name="pais">
+                <option value="">Todos los países</option>
+                {% for pais in paises %}
+                    <option
+                        value="{{ pais }}"
+                        {% if pais == pais_seleccionado %}selected{% endif %}
+                    >
+                        {{ pais }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <button class="boton boton-claro" type="submit">
+                Buscar destinos
+            </button>
+        </form>
+
+        <p class="contador-resultados">
+            {{ destinos|length }}
+            {% if destinos|length == 1 %}
+                destino encontrado
+            {% else %}
+                destinos encontrados
+            {% endif %}
+        </p>
+
+        <div class="destinos">
+            {% for destino in destinos %}
+                <article class="tarjeta">
+                    <div class="tarjeta-imagen">
+                        <img
+                            src="{{ destino.imagen }}"
+                            alt="Paisaje de {{ destino.nombre }}"
+                        >
+                        <span class="etiqueta-imagen">{{ destino.pais }}</span>
+                    </div>
+
+                    <div class="tarjeta-contenido">
+                        <h3>{{ destino.nombre }}</h3>
+                        <p>{{ destino.descripcion }}</p>
+                        <p>{{ destino.dias }} días</p>
+                        <div class="precio">Desde ${{ destino.precio }}</div>
+
+                        <a class="enlace-flecha" href="{% url 'contacto' %}">
+                            Consultar viaje <span>↗</span>
+                        </a>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="mensaje-vacio">
+                    <h2>No encontramos coincidencias</h2>
+                    <p>Prueba otro país, ciudad o palabra.</p>
+                    <a class="boton boton-oscuro" href="{% url 'destinos' %}">
+                        Ver todos
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<script> 
+    [
+  {
+    "model": "viajes.destino",
+    "fields": {
+      "nombre": "París",
+      "pais": "Francia",
+      "ciudad": "París",
+      "descripcion": "Monumentos, gastronomía, arte y paseos junto al Sena.",
+      "precio": "1299.00",
+      "dias": 7,
+      "imagen": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+      "destacado": true
+    }
+  },
+  {
+    "model": "viajes.destino",
+    "fields": {
+      "nombre": "Roma",
+      "pais": "Italia",
+      "ciudad": "Roma",
+      "descripcion": "Historia romana, gastronomía italiana y arquitectura antigua.",
+      "precio": "1150.00",
+      "dias": 6,
+      "imagen": "https://images.unsplash.com/photo-1552832230-c0197dd311b5",
+      "destacado": true
+    }
+  }
+]
+</script>
+{% endblock %}

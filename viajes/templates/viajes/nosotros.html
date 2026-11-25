@@ -1,0 +1,128 @@
+{% extends "viajes/base.html" %}
+
+{% block titulo %}Nosotros | Viajes Luma{% endblock %}
+
+{% block contenido %}
+<section class="nosotros-hero">
+    <div class="nosotros-hero-contenido">
+        <span class="eyebrow">NUESTRA FILOSOFÍA</span>
+        <h1>Viajar cambia la forma en que miramos el mundo.</h1>
+        <p>
+            Creamos un espacio para inspirarte a descubrir lugares,
+            culturas y experiencias diferentes.
+        </p>
+        <a class="boton boton-claro" href="{% url 'destinos' %}">
+            Encuentra tu destino <span>↗</span>
+        </a>
+    </div>
+</section>
+
+<section class="nosotros-intro">
+    <div>
+        <span class="eyebrow eyebrow-oscuro">SOMOS VIAJES LUMA</span>
+        <h2>Creemos que cada viaje tiene una historia que contar.</h2>
+    </div>
+    <p>
+        Viajes Luma nació para reunir ideas de lugares que vale la pena conocer.
+        Queremos que puedas explorar opciones, comparar destinos y comenzar a
+        imaginar una experiencia hecha a tu medida.
+    </p>
+</section>
+
+<section class="nosotros-historia">
+    <div class="nosotros-foto nosotros-foto-principal"
+         role="img"
+         aria-label="Paisaje de montañas y lago">
+    </div>
+
+    <div class="nosotros-historia-texto">
+        <span class="eyebrow eyebrow-oscuro">MÁS QUE UN DESTINO</span>
+        <h2>El viaje también está en los pequeños momentos.</h2>
+        <p>
+            Un paseo por una ciudad desconocida, una comida que nunca habías
+            probado o una vista que te deja sin palabras: esos momentos hacen
+            especial cada aventura.
+        </p>
+        <p>
+            Por eso reunimos destinos con información útil para que puedas
+            inspirarte y planear el viaje que realmente quieres vivir.
+        </p>
+        <a class="enlace-flecha" href="{% url 'servicios' %}">
+            Conoce lo que ofrecemos <span>↗</span>
+        </a>
+    </div>
+</section>
+
+<section class="nosotros-valores">
+    <div class="nosotros-seccion-titulo">
+        <span class="eyebrow eyebrow-oscuro">LO QUE NOS MUEVE</span>
+        <h2>Viajar con curiosidad, cuidado y libertad.</h2>
+    </div>
+
+    <div class="valores-grid">
+        <article class="valor-card">
+            <span class="valor-numero">01</span>
+            <div class="valor-icono">◉</div>
+            <h3>Descubrimiento</h3>
+            <p>
+                Nos encanta encontrar lugares que inspiran nuevas historias
+                y perspectivas.
+            </p>
+        </article>
+
+        <article class="valor-card">
+            <span class="valor-numero">02</span>
+            <div class="valor-icono">✦</div>
+            <h3>Experiencias auténticas</h3>
+            <p>
+                Cada cultura y cada destino tienen algo propio que merece
+                ser conocido.
+            </p>
+        </article>
+
+        <article class="valor-card">
+            <span class="valor-numero">03</span>
+            <div class="valor-icono">♡</div>
+            <h3>Viajes a tu manera</h3>
+            <p>
+                Tu viaje debe ajustarse a tus intereses, tu ritmo y tus ideas.
+            </p>
+        </article>
+    </div>
+</section>
+
+<section class="nosotros-galeria">
+    <div class="nosotros-galeria-cabecera">
+        <div>
+            <span class="eyebrow eyebrow-oscuro">INSPIRACIÓN SIN FRONTERAS</span>
+            <h2>Un mundo lleno de posibilidades.</h2>
+        </div>
+        <a class="enlace-flecha" href="{% url 'destinos' %}">
+            Explorar destinos <span>↗</span>
+        </a>
+    </div>
+
+    <div class="galeria-paises">
+        <article class="galeria-item galeria-japon">
+            <span>ASIA</span>
+            <h3>Japón</h3>
+        </article>
+        <article class="galeria-item galeria-italia">
+            <span>EUROPA</span>
+            <h3>Italia</h3>
+        </article>
+        <article class="galeria-item galeria-peru">
+            <span>SUDAMÉRICA</span>
+            <h3>Perú</h3>
+        </article>
+    </div>
+</section>
+
+<section class="nosotros-cta">
+    <span class="eyebrow">EL PRÓXIMO CAPÍTULO PUEDE SER TUYO</span>
+    <h2>¿Qué lugar te gustaría descubrir?</h2>
+    <a class="boton boton-claro" href="{% url 'destinos' %}">
+        Ver destinos <span>↗</span>
+    </a>
+</section>
+{% endblock %}

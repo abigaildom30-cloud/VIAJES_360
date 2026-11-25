@@ -1,0 +1,133 @@
+{% extends "viajes/base.html" %}
+
+{% block titulo %}Viajes Luma | Descubre el mundo{% endblock %}
+
+{% block contenido %}
+<section class="hero">
+    <div class="hero-fondo"></div>
+
+    <div class="hero-contenido">
+        <span class="eyebrow">VIAJES CON SIGNIFICADO</span>
+        <h1>El mundo es<br>tu próxima historia.</h1>
+        <p>
+            Lugares extraordinarios. Experiencias auténticas.
+            Recuerdos que duran para siempre.
+        </p>
+
+        <a class="boton boton-claro" href="{% url 'destinos' %}">
+            Explorar destinos <span>↗</span>
+        </a>
+    </div>
+
+    <div class="hero-pie">
+        <span>DESCUBRE · CONECTA · VIAJA</span>
+        <span>01 — 04</span>
+    </div>
+</section>
+
+<section class="intro seccion">
+    <div>
+        <span class="eyebrow eyebrow-oscuro">EL ARTE DE VIAJAR</span>
+        <h2>No solo visitas un lugar.<br><em>Lo sientes.</em></h2>
+    </div>
+    <p>
+        Diseñamos viajes para descubrir el mundo a tu propio ritmo:
+        desde ciudades llenas de historia hasta paisajes que parecen
+        de otro planeta.
+    </p>
+</section>
+
+<section class="seccion destinos-seccion" id="destinos">
+    <div class="encabezado-seccion">
+        <div>
+            <span class="eyebrow eyebrow-oscuro">UNA SELECCIÓN PARA TI</span>
+            <h2>Destinos destacados</h2>
+        </div>
+        <a class="enlace-flecha" href="{% url 'destinos' %}">
+            Ver todos los destinos <span>↗</span>
+        </a>
+    </div>
+
+    <div class="destinos">
+        {% for destino in destinos %}
+            <article class="tarjeta">
+                <div class="tarjeta-imagen">
+                    <img
+                        src="{{ destino.imagen }}"
+                        alt="Paisaje de {{ destino.nombre }}"
+                        loading="lazy"
+                    >
+                    <span class="etiqueta-imagen">{{ destino.pais }}</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+                    <div>
+                        <h3>{{ destino.nombre }}</h3>
+                        <p>{{ destino.dias }} días · Una experiencia inolvidable</p>
+                    </div>
+                    <div class="precio">Desde ${{ destino.precio }}</div>
+                    <a class="enlace-flecha" href="{% url 'contacto' %}">
+                        Consultar viaje <span>↗</span>
+                    </a>
+                </div>
+            </article>
+        {% empty %}
+            <p class="mensaje-vacio">
+                Aún no hay destinos publicados. Agrégalos desde
+                <a href="/admin/">el administrador</a>.
+            </p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="paises">
+    <div class="paises-titulo">
+        <span class="eyebrow">INSPIRACIÓN PARA TU PRÓXIMO VIAJE</span>
+        <h2>Un mundo por descubrir.</h2>
+    </div>
+
+    <div class="paises-grid">
+        <a class="pais-card pais-japon" href="{% url 'destinos' %}">
+            <span>ASIA</span>
+            <strong>Japón</strong>
+            <small>Tradición y vanguardia ↗</small>
+        </a>
+
+        <a class="pais-card pais-italia" href="{% url 'destinos' %}">
+            <span>EUROPA</span>
+            <strong>Italia</strong>
+            <small>La belleza en cada detalle ↗</small>
+        </a>
+
+        <a class="pais-card pais-peru" href="{% url 'destinos' %}">
+            <span>SUDAMÉRICA</span>
+            <strong>Perú</strong>
+            <small>Historia que inspira ↗</small>
+        </a>
+    </div>
+</section>
+
+<section class="experiencia seccion">
+    <div class="experiencia-foto"></div>
+    <div class="experiencia-texto">
+        <span class="eyebrow eyebrow-oscuro">VIAJAR, A TU MANERA</span>
+        <h2>Menos itinerarios.<br><em>Más momentos.</em></h2>
+        <p>
+            Encuentra lugares que te inspiren, consulta sus detalles y
+            empieza a imaginar tu próxima aventura. Cada viaje comienza
+            con una idea.
+        </p>
+        <a class="boton boton-oscuro" href="{% url 'nosotros' %}">
+            Conoce Viajes Luma <span>↗</span>
+        </a>
+    </div>
+</section>
+
+<section class="cierre">
+    <span class="eyebrow">EL PRÓXIMO RECUERDO TE ESPERA</span>
+    <h2>¿A dónde te gustaría ir?</h2>
+    <a class="boton boton-claro" href="{% url 'contacto' %}">
+        Hablemos de tu viaje <span>↗</span>
+    </a>
+</section>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "viajes/base.html" %}
+
+{% block titulo %}Contacto | Viajes Luma{% endblock %}
+
+{% block contenido %}
+<section class="contacto-hero">
+    <div class="contacto-hero-contenido">
+        <span class="eyebrow">ESTAMOS PARA AYUDARTE</span>
+        <h1>Hablemos de tu próximo viaje.</h1>
+        <p>
+            Cuéntanos qué destino tienes en mente y te ayudaremos a dar
+            el primer paso.
+        </p>
+    </div>
+</section>
+
+<section class="contacto-seccion">
+    <div class="contacto-layout">
+        <aside class="contacto-info">
+            <span class="eyebrow eyebrow-oscuro">PONTE EN CONTACTO</span>
+            <h2>Una pregunta puede ser el comienzo de una aventura.</h2>
+            <p>
+                Escríbenos para consultar sobre destinos, precios publicados
+                o información para planear tu viaje.
+            </p>
+
+            <div class="contacto-dato">
+                <span class="contacto-dato-icono">✉</span>
+                <div>
+                    <small>Correo electrónico</small>
+                    <a href="mailto:viajes@example.com">viajes@example.com</a>
+                </div>
+            </div>
+
+            <div class="contacto-dato">
+                <span class="contacto-dato-icono">◷</span>
+                <div>
+                    <small>Horario de atención</small>
+                    <strong>Lunes a viernes · 9:00–17:00</strong>
+                </div>
+            </div>
+
+            <div class="contacto-nota">
+                <span>✦</span>
+                <p>
+                    Para consultar por un destino concreto, incluye su nombre
+                    en el asunto del mensaje.
+                </p>
+            </div>
+        </aside>
+
+        <div class="contacto-formulario">
+            <h2>Envíanos un mensaje</h2>
+            <p>Completa los campos y cuéntanos cómo podemos ayudarte.</p>
+
+            {% if messages %}
+                <div class="mensajes-formulario" aria-live="polite">
+                    {% for message in messages %}
+                        <p class="mensaje-alerta {{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="post" class="formulario-contacto">
+                {% csrf_token %}
+
+                <div class="formulario-dos-campos">
+                    <label>
+                        Tu nombre
+                        <input
+                            type="text"
+                            name="nombre"
+                            placeholder="Ej. Ana López"
+                            maxlength="100"
+                            autocomplete="name"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Tu correo
+                        <input
+                            type="email"
+                            name="correo"
+                            placeholder="ana@ejemplo.com"
+                            maxlength="254"
+                            autocomplete="email"
+                            required
+                        >
+                    </label>
+                </div>
+
+                <label>
+                    Asunto
+                    <input
+                        type="text"
+                        name="asunto"
+                        placeholder="¿Sobre qué viaje quieres consultar?"
+                        maxlength="150"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Mensaje
+                    <textarea
+                        name="mensaje"
+                        rows="5"
+                        placeholder="Cuéntanos qué destino te interesa..."
+                        required
+                    ></textarea>
+                </label>
+
+                <button class="boton boton-oscuro" type="submit">
+                    Enviar consulta <span>↗</span>
+                </button>
+
+                <small class="formulario-privacidad">
+                    Usaremos estos datos únicamente para responder tu consulta.
+                </small>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="contacto-franja">
+    <p>¿Todavía estás buscando inspiración?</p>
+    <a class="enlace-flecha" href="{% url 'destinos' %}">
+        Explora nuestros destinos <span>↗</span>
+    </a>
+</section>
+{% endblock %}

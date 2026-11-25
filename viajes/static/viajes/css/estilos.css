@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+:root {
+    --ink: #172f32;
+    --muted: #74817d;
+    --paper: #f7f6f1;
+    --green: #355b50;
+    --lime: #d7dfb4;
+    --white: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "DM Sans", Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.encabezado {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    min-height: 82px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    color: var(--white);
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.logo-icono {
+    color: var(--lime);
+    font-size: 1.5rem;
+}
+
+.logo-subtitulo {
+    align-self: end;
+    margin: 0 0 2px -5px;
+    font-size: .54rem;
+    letter-spacing: 2px;
+}
+
+.navegacion {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    font-size: .83rem;
+}
+
+.navegacion a {
+    opacity: .9;
+    transition: opacity .2s, color .2s;
+}
+
+.navegacion a:hover {
+    color: var(--lime);
+    opacity: 1;
+}
+
+.navegacion .enlace-contacto {
+    padding: 11px 17px;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 30px;
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    min-height: 730px;
+    align-items: center;
+    overflow: hidden;
+    background: #193b3b;
+    color: white;
+}
+
+.hero-fondo {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(10,31,34,.72), rgba(10,31,34,.08)),
+        linear-gradient(0deg, rgba(10,31,34,.3), transparent 40%),
+        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90")
+        center 53% / cover;
+    animation: zoomSuave 12s ease-out both;
+}
+
+.hero-contenido {
+    position: relative;
+    width: min(1120px, 86%);
+    margin: 60px auto 0;
+    animation: aparecer .9s ease both;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--lime);
+    font-size: .69rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.eyebrow-oscuro {
+    color: var(--green);
+}
+
+.hero h1 {
+    max-width: 800px;
+    margin: 24px 0 20px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 500;
+    line-height: .98;
+    letter-spacing: -3px;
+}
+
+.hero-contenido p {
+    max-width: 480px;
+    margin-bottom: 30px;
+    color: rgba(255,255,255,.86);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.boton {
+    display: inline-flex;
+    min-height: 49px;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 0 21px;
+    border-radius: 3px;
+    font-size: .83rem;
+    font-weight: 700;
+    transition: transform .2s, background .2s;
+}
+
+.boton:hover {
+    transform: translateY(-3px);
+}
+
+.boton-claro {
+    background: var(--lime);
+    color: var(--ink);
+}
+
+.boton-oscuro {
+    background: var(--green);
+    color: white;
+}
+
+.hero-pie {
+    position: absolute;
+    right: 7%;
+    bottom: 30px;
+    left: 7%;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255,255,255,.75);
+    font-size: .64rem;
+    letter-spacing: 2px;
+}
+
+.seccion {
+    padding: 100px 7%;
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items: end;
+    gap: 70px;
+    background: var(--paper);
+}
+
+.intro h2,
+.experiencia h2 {
+    margin: 17px 0 0;
+    color: var(--ink);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1.12;
+}
+
+.intro h2 em,
+.experiencia h2 em {
+    color: var(--green);
+    font-weight: 500;
+}
+
+.intro > p,
+.experiencia-texto > p {
+    color: var(--muted);
+    font-size: .96rem;
+    line-height: 1.9;
+}
+
+.destinos-seccion {
+    background: #fff;
+}
+
+.encabezado-seccion {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.encabezado-seccion h2,
+.paises-titulo h2 {
+    margin: 12px 0 0;
+    color: var(--ink);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.3rem, 4vw, 3.6rem);
+    font-weight: 500;
+}
+
+.enlace-flecha {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--green);
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+.enlace-flecha span {
+    transition: transform .2s;
+}
+
+.enlace-flecha:hover span {
+    transform: translate(4px, -3px);
+}
+
+.destinos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 23px;
+}
+
+.tarjeta {
+    overflow: hidden;
+    background: var(--paper);
+    animation: aparecer .7s ease both;
+}
+
+.tarjeta-imagen {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background: #dfe5df;
+}
+
+.tarjeta-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .65s;
+}
+
+.tarjeta:hover .tarjeta-imagen img {
+    transform: scale(1.06);
+}
+
+.etiqueta-imagen {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    padding: 7px 11px;
+    background: rgba(20,40,38,.78);
+    color: white;
+    font-size: .67rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.tarjeta-contenido {
+    padding: 19px 18px 22px;
+}
+
+.tarjeta-contenido h3 {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.55rem;
+    font-weight: 500;
+}
+
+.tarjeta-contenido p {
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.precio {
+    margin: 13px 0;
+    color: var(--green);
+    font-size: .96rem;
+    font-weight: 700;
+}
+
+.mensaje-vacio {
+    grid-column: 1 / -1;
+    padding: 25px;
+    background: var(--paper);
+    color: var(--muted);
+}
+
+.mensaje-vacio a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.paises {
+    padding: 92px 7% 105px;
+    background: #e9ece3;
+}
+
+.paises-titulo {
+    margin-bottom: 32px;
+}
+
+.paises-titulo h2 {
+    margin-bottom: 0;
+}
+
+.paises-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    gap: 18px;
+}
+
+.pais-card {
+    position: relative;
+    display: flex;
+    min-height: 390px;
+    flex-direction: column;
+    justify-content: end;
+    overflow: hidden;
+    padding: 25px;
+    color: white;
+    background-position: center;
+    background-size: cover;
+    isolation: isolate;
+    transition: background-size .4s, transform .3s;
+}
+
+.pais-card::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(8,24,25,.75), transparent 70%);
+    content: "";
+}
+
+.pais-card:hover {
+    transform: translateY(-5px);
+}
+
+.pais-card > span {
+    font-size: .66rem;
+    letter-spacing: 2px;
+}
+
+.pais-card strong {
+    margin-top: 7px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 500;
+}
+
+.pais-card small {
+    margin-top: 5px;
+    color: rgba(255,255,255,.85);
+}
+
+.pais-japon {
+    background-image: url("https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1100&q=85");
+}
+
+.pais-italia {
+    background-image: url("https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=85");
+}
+
+.pais-peru {
+    background-image: url("https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1000&q=85");
+}
+
+.experiencia {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 8%;
+    background: var(--paper);
+}
+
+.experiencia-foto {
+    min-height: 460px;
+    background:
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85")
+        center / cover;
+}
+
+.experiencia-texto {
+    max-width: 470px;
+}
+
+.experiencia-texto h2 {
+    margin-bottom: 18px;
+}
+
+.experiencia-texto > p {
+    margin-bottom: 25px;
+}
+
+.cierre {
+    padding: 85px 20px;
+    background:
+        linear-gradient(rgba(18,43,43,.76), rgba(18,43,43,.76)),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85")
+        center 55% / cover;
+    color: white;
+    text-align: center;
+}
+
+.cierre h2 {
+    margin: 15px 0 25px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 500;
+}
+
+.pie {
+    display: flex;
+    min-height: 120px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 25px 7%;
+    background: #142d2d;
+    color: rgba(255,255,255,.75);
+    font-size: .78rem;
+}
+
+.pie p {
+    margin: 0;
+}
+
+.logo-pie {
+    color: white;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomSuave {
+    from {
+        transform: scale(1.07);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 760px) {
+    .encabezado {
+        position: absolute;
+        align-items: flex-start;
+        padding: 20px 6%;
+    }
+
+    .navegacion {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+        font-size: .75rem;
+    }
+
+    .navegacion a:nth-child(3),
+    .navegacion a:nth-child(4) {
+        display: none;
+    }
+
+    .hero {
+        min-height: 680px;
+    }
+
+    .hero-contenido {
+        width: 88%;
+        margin-top: 80px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .seccion,
+    .paises {
+        padding: 65px 6%;
+    }
+
+    .intro,
+    .experiencia {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .encabezado-seccion {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .paises-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pais-card {
+        min-height: 300px;
+    }
+
+    .experiencia-foto {
+        min-height: 320px;
+    }
+
+    .pie {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-inline: 6%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}

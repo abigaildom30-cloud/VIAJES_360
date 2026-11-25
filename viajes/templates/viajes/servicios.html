@@ -1,0 +1,139 @@
+{% extends "viajes/base.html" %}
+
+{% block titulo %}Servicios | Viajes Luma{% endblock %}
+
+{% block contenido %}
+<section class="servicios-hero">
+    <div class="servicios-hero-contenido">
+        <span class="eyebrow">MÁS QUE UN VIAJE</span>
+        <h1>Tu próxima aventura empieza con una buena idea.</h1>
+        <p>
+            Explora destinos, compara opciones y encuentra inspiración
+            para planear un viaje a tu manera.
+        </p>
+        <a class="boton boton-claro" href="{% url 'destinos' %}">
+            Explorar destinos <span>↗</span>
+        </a>
+    </div>
+</section>
+
+<section class="servicios-intro">
+    <div>
+        <span class="eyebrow eyebrow-oscuro">VIAJA A TU RITMO</span>
+        <h2>Herramientas sencillas para inspirar tu viaje.</h2>
+    </div>
+    <p>
+        Busca por país o ciudad, revisa los detalles de cada destino y
+        contáctanos si quieres consultar sobre un viaje.
+    </p>
+</section>
+
+<section class="servicios-lista">
+    <div class="seccion-cabecera">
+        <div>
+            <span class="eyebrow eyebrow-oscuro">¿QUÉ PUEDES HACER?</span>
+            <h2>Un buen viaje comienza aquí</h2>
+        </div>
+    </div>
+
+    <div class="servicios-grid">
+        <article class="servicio-pro">
+            <span class="servicio-numero">01</span>
+            <div class="servicio-icono">⌕</div>
+            <h3>Encuentra un lugar</h3>
+            <p>
+                Busca destinos por nombre, ciudad, país o palabras de su
+                descripción.
+            </p>
+            <a class="enlace-flecha" href="{% url 'destinos' %}">
+                Buscar destinos <span>↗</span>
+            </a>
+        </article>
+
+        <article class="servicio-pro">
+            <span class="servicio-numero">02</span>
+            <div class="servicio-icono">✦</div>
+            <h3>Compara opciones</h3>
+            <p>
+                Revisa la duración, el precio publicado y la información
+                de cada lugar.
+            </p>
+            <a class="enlace-flecha" href="{% url 'destinos' %}?orden=precio">
+                Ver precios <span>↗</span>
+            </a>
+        </article>
+
+        <article class="servicio-pro">
+            <span class="servicio-numero">03</span>
+            <div class="servicio-icono">✉</div>
+            <h3>Haz una consulta</h3>
+            <p>
+                Escríbenos para preguntar sobre un destino y recibir más
+                información.
+            </p>
+            <a class="enlace-flecha" href="{% url 'contacto' %}">
+                Ir a contacto <span>↗</span>
+            </a>
+        </article>
+    </div>
+</section>
+
+<section class="servicios-estadisticas">
+    <div>
+        <strong>{{ cantidad_destinos }}</strong>
+        <span>destinos para explorar</span>
+    </div>
+    <div>
+        <strong>{{ cantidad_paises }}</strong>
+        <span>países disponibles</span>
+    </div>
+    <div>
+        <strong>Tu viaje</strong>
+        <span>empieza con inspiración</span>
+    </div>
+</section>
+
+<section class="servicios-destacados">
+    <div class="seccion-cabecera">
+        <div>
+            <span class="eyebrow eyebrow-oscuro">PARA INSPIRARTE</span>
+            <h2>Algunos lugares que puedes descubrir</h2>
+        </div>
+        <a class="enlace-flecha" href="{% url 'destinos' %}">
+            Ver todos <span>↗</span>
+        </a>
+    </div>
+
+    <div class="servicios-destinos-grid">
+        {% for destino in destacados %}
+            <a class="servicio-destino" href="{% url 'destinos' %}?buscar={{ destino.nombre|urlencode }}">
+                <img src="{{ destino.imagen }}" alt="Paisaje de {{ destino.nombre }}" loading="lazy">
+                <span>{{ destino.pais }}</span>
+                <strong>{{ destino.nombre }}</strong>
+                <small>Descubrir destino ↗</small>
+            </a>
+        {% empty %}
+            <p class="mensaje-vacio">
+                Aún no hay destinos. Agrégalos desde
+                <a href="/admin/">el administrador</a>.
+            </p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="servicios-cta">
+    <span class="eyebrow">¿YA TIENES UN DESTINO EN MENTE?</span>
+    <h2>Vamos a encontrarlo.</h2>
+
+    <form class="busqueda-servicios" method="get" action="{% url 'destinos' %}">
+        <input
+            type="search"
+            name="buscar"
+            placeholder="Escribe país, ciudad o destino"
+            aria-label="Buscar país, ciudad o destino"
+            required
+        >
+        <button class="boton boton-claro" type="submit">Buscar ↗</button>
+    </form>
+</section>
+{% endblock %}
